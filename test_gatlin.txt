@@ -1,0 +1,36 @@
+// ==========================================
+// 升级UI（临时测试版：强制选项为加特林）
+// ==========================================
+function show_levelup() {
+    let gatling_index = 10; // 'GatlingGun' 在 upgrade_names 数组中的索引
+
+    update_position(lv_title_card, [width / 2, height / 2 - 80]);
+    update_scale(lv_title_card, [3, 0.8]);
+    update_color(lv_title_card, [80, 80, 80, 255]);
+    update_to_top(lv_title_card);
+    update_text(lv_title_text, 'LEVEL UP!');
+    update_position(lv_title_text, [width / 2, height / 2 - 80]);
+    update_scale(lv_title_text, [1, 1]);
+    update_to_top(lv_title_text);
+
+    for (let i = 0; i < 3; i = i + 1) {
+        let cx = width / 2 + (i - 1) * 180;
+        let cy = height / 2;
+        update_position(lv_cards[i], [cx, cy]);
+        update_scale(lv_cards[i], [3.2, 1.2]);
+        update_color(lv_cards[i], [50, 50, 50, 255]);
+        update_to_top(lv_cards[i]);
+
+        // 强制卡牌文本与选项为 GatlingGun
+        update_text(lv_texts[i], 'GatlingGun');
+        update_color(lv_texts[i], [255, 200, 0, 255]);
+        update_position(lv_texts[i], [cx, cy]);
+        update_scale(lv_texts[i], [1, 1]);
+        update_to_top(lv_texts[i]);
+
+        levelup_options[i] = gatling_index;
+    }
+
+    levelup_active = true;
+    levelup_click_lock = true;
+}
